@@ -63,12 +63,14 @@ public class Rocketry101
 		public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
 			//register blocks
 			blockRegistryEvent.getRegistry().register(new IronFrame());
+			blockRegistryEvent.getRegistry().register(new CopperOre());
 		}
 		
 		@SubscribeEvent
 		public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
 			//register items
 			itemRegistryEvent.getRegistry().register(new BlockItem(ModBlocks.IRONFRAME, new Item.Properties()).setRegistryName("ironframe"));
+			itemRegistryEvent.getRegistry().register(new BlockItem(ModBlocks.COPPERORE, new Item.Properties()).setRegistryName("copperore"));
 		}
 	}
 }
