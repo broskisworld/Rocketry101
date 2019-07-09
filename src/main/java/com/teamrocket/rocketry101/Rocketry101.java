@@ -1,5 +1,9 @@
 package com.teamrocket.rocketry101;
 
+import com.teamrocket.rocketry101.blocks.*;
+import com.teamrocket.rocketry101.items.*;
+import com.teamrocket.rocketry101.setup.*;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
@@ -7,19 +11,20 @@ import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import com.teamrocket.rocketry101.blocks.*;
-import com.teamrocket.rocketry101.items.*;
 
 import java.util.stream.Collectors;
 
@@ -29,6 +34,10 @@ public class Rocketry101
 {
 	// Directly reference a log4j logger.
 	private static final Logger LOGGER = LogManager.getLogger();
+	
+	public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
+
+	public static ModSetup setup = new ModSetup();
 
 	public Rocketry101() {
 		//Register the setup method for modloading
@@ -43,6 +52,8 @@ public class Rocketry101
 	private void setup(final FMLCommonSetupEvent event)
 	{
 		LOGGER.info("Rocketry101 running preinit...");
+		proxy.init();
+		setup.init();
 		LOGGER.info("Rocketry101 preinit complete!");
 	}
 
