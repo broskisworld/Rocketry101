@@ -19,6 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.teamrocket.rocketry101.blocks.*;
+import com.teamrocket.rocketry101.items.*;
 
 import java.util.stream.Collectors;
 
@@ -71,6 +72,7 @@ public class Rocketry101
 			//register items
 			itemRegistryEvent.getRegistry().register(new BlockItem(ModBlocks.IRONFRAME, new Item.Properties()).setRegistryName("ironframe"));
 			itemRegistryEvent.getRegistry().register(new BlockItem(ModBlocks.COPPERORE, new Item.Properties()).setRegistryName("copperore"));
+			itemRegistryEvent.getRegistry().register(new CopperIngot());
 		}
 	}
 }
