@@ -7,6 +7,7 @@ public class CopperIngot extends Item {
 
     public CopperIngot() {
         super(new Item.Properties()
+				.group(Rocketry101.setup.itemGroup)
                 .maxStackSize(64));
         setRegistryName("copperingot");
     }

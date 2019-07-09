@@ -52,8 +52,8 @@ public class Rocketry101
 	private void setup(final FMLCommonSetupEvent event)
 	{
 		LOGGER.info("Rocketry101 running preinit...");
-		proxy.init();
 		setup.init();
+		proxy.init();
 		LOGGER.info("Rocketry101 preinit complete!");
 	}
 
@@ -80,10 +80,16 @@ public class Rocketry101
 		
 		@SubscribeEvent
 		public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
+			//register Creative Tab
+			Item.Properties properties = new Item.Properties()
+                    .group(setup.itemGroup);
 			//register items
-			itemRegistryEvent.getRegistry().register(new BlockItem(ModBlocks.IRONFRAME, new Item.Properties()).setRegistryName("ironframe"));
-			itemRegistryEvent.getRegistry().register(new BlockItem(ModBlocks.COPPERORE, new Item.Properties()).setRegistryName("copperore"));
+			itemRegistryEvent.getRegistry().register(new BlockItem(ModBlocks.IRONFRAME, properties).setRegistryName("ironframe"));
+			
+			itemRegistryEvent.getRegistry().register(new BlockItem(ModBlocks.COPPERORE, properties).setRegistryName("copperore"));
+			
 			itemRegistryEvent.getRegistry().register(new CopperIngot());
+			
 		}
 	}
 }
