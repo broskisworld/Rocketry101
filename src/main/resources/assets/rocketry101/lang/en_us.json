@@ -1,0 +1,11 @@
+{
+
+ "block.rocketry101.copperore": "Copper Ore",
+ "block.rocketry101.ironframe": "Iron Frame",
+ 
+ "item.rocketry101.copperingot": "Copper Ingot",
+ 
+ "_comment": "Creative Tabs",
+ "itemGroup.rocketry101": "Rocketry 101"
+
+}
